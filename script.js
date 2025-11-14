@@ -1,5 +1,8 @@
 // DOM ELEMENTS
 const tagsContainer = document.querySelector(".tags-container");
+const mobileNavMenu = document.querySelector(".mobile-nav");
+const sideBar = document.querySelector(".sidebar");
+const menuBtns = document.querySelectorAll(".main-menu-items button");
 
 const tagsArr = [
   { label: "AI", count: 0 },
@@ -48,4 +51,26 @@ tagsArr.forEach((el) => {
   tagDiv.appendChild(tagCount);
 
   tagsContainer.appendChild(tagDiv);
+});
+
+mobileNavMenu.addEventListener("click", () => {
+  sideBar.classList.toggle("open");
+
+  if (sideBar.classList.contains("open")) {
+    mobileNavMenu.innerHTML = `<i class="fa-solid fa-x"></i>`;
+  } else {
+    mobileNavMenu.innerHTML = `<i class="fa-solid fa-bars"></i>`;
+  }
+});
+
+menuBtns.forEach((el) => {
+  el.addEventListener("click", () => {
+    sideBar.classList.remove("open");
+
+    if (sideBar.classList.contains("open")) {
+      mobileNavMenu.innerHTML = `<i class="fa-solid fa-x"></i>`;
+    } else {
+      mobileNavMenu.innerHTML = `<i class="fa-solid fa-bars"></i>`;
+    }
+  });
 });

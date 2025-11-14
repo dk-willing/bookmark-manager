@@ -548,6 +548,7 @@ h2 {
     background-color: var(--white);
     backdrop-filter: blur(20px);
     width: 50%;
+    position: fixed;
     left: 0;
   }
 

@@ -34,6 +34,17 @@ const bookmarkItems = [
     DateAdded: "12 / 11 / 26",
     TimeAdded: "12:32",
   },
+  {
+    title: "Build With Dave",
+    imageUrl:
+      "https://w7.pngwing.com/pngs/713/815/png-transparent-whatsapp-iphone-whatsapp-logo-monochrome-black-thumbnail.png",
+    pageLink: "bigfashion.com",
+    description:
+      "Performance & best practice: Use PurgeCSS or the built-in JIT mode to remove unused classes; learn about how to keepbundle size small.",
+    tags: ["CSS", "Python", "JavaScript"],
+    DateAdded: "12 / 11 / 26",
+    TimeAdded: "12:32",
+  },
 ];
 
 // Creating and adding card to the UI

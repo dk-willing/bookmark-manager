@@ -40,6 +40,8 @@ textarea {
   border: none;
   font-family: inherit;
   resize: none;
+  font-size: 1.6rem;
+  transform: scale(0.75);
 }
 
 img {
@@ -460,9 +462,8 @@ h2 {
   z-index: 10;
   display: flex;
   justify-content: center;
-  align-items: center;
   backdrop-filter: blur(5px);
-
+  align-items: center;
   height: 0;
   transition: all 0.3s linear;
 }
@@ -477,8 +478,7 @@ h2 {
 }
 
 .form-modal.show-modal {
-  height: 100vh;
-  position: fixed;
+  height: 110%;
 }
 
 .form-modal form {
@@ -487,6 +487,7 @@ h2 {
   padding: 2rem;
   border: 1px solid var(--gray);
   z-index: 1;
+  margin-bottom: 5rem;
 }
 
 .form-modal form p {
@@ -646,6 +647,10 @@ h2 {
 
   .form-modal form {
     width: 70%;
+  }
+
+  .input-group {
+    margin-bottom: 0.5rem;
   }
 }
 

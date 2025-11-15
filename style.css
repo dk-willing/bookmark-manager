@@ -26,6 +26,7 @@ body {
   font-weight: 400;
   line-height: 1.7;
   color: var(--black);
+  min-height: 100vh;
 }
 
 button {
@@ -70,7 +71,7 @@ h2 {
   gap: 2rem;
   border-right: 1px solid var(--gray);
   flex-basis: 10%;
-  height: 100vh;
+  min-height: 100vh;
   position: relative;
   z-index: 5;
 }

@@ -80,7 +80,8 @@ h2 {
 .main-menu-items {
   margin-bottom: 2rem;
 }
-.main-menu-items > button {
+.main-menu-items > a {
+  color: var(--black);
   font-family: inherit;
   cursor: pointer;
   margin-bottom: 0.2rem;
@@ -97,7 +98,7 @@ h2 {
 }
 
 .main-menu-items > button:hover {
-  background-color: var(--blue);
+  background-color: #eee;
 }
 .main-menu-items button .menu-icon {
   width: 1.4rem;
@@ -203,10 +204,12 @@ h2 {
   transform: scale(1.01);
 }
 
-.main-content-down {
+.main-content-down,
+.main-content-down-archieve {
   padding: 3rem;
   padding-top: 12rem;
   background-color: var(--blue);
+  min-height: 100vh;
 }
 .main-content-down-header {
   display: flex;
@@ -268,7 +271,8 @@ h2 {
 }
 
 /* CARDS */
-.main-content-cards {
+.main-content-cards,
+.main-content-cards-2 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
@@ -357,6 +361,9 @@ h2 {
 
 .tags-els {
   margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
 }
 .tags-els span {
   background-color: var(--gray);
@@ -419,14 +426,28 @@ h2 {
 .footer-info {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.2rem;
   font-size: 1.2rem;
+}
+.footer-info div {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
 }
 .pin {
   cursor: pointer;
 }
 .pin:hover {
   color: #4f54b2;
+}
+
+.no-bookmarks {
+  font-size: 1.7rem;
+  color: var(--gray-deep);
+}
+
+.card-footer .pin .pinned .pin-bookmark {
+  color: #4263eb;
 }
 
 /* MODALS */
@@ -471,7 +492,7 @@ h2 {
 .form-modal form p {
   font-size: 2rem;
   font-weight: 600;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   text-align: center;
 }
 
@@ -511,6 +532,40 @@ h2 {
   z-index: 30;
   cursor: pointer;
 }
+#tag-input button {
+  padding: 0.8rem 1.2rem;
+  margin: 0.3rem;
+  font-size: 0.9;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s linear;
+}
+
+#tag-input button:hover {
+  background-color: #999;
+  color: var(--white);
+}
+#tag-input {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+#tag-input button .selected-tags {
+  background-color: #333;
+  color: var(--white);
+}
+
+/* VARIOUS SCREENS */
+#home-screen.clicked,
+#archieve-screen.clicked {
+  background-color: var(--blue);
+}
+.main-content-down {
+  display: none;
+}
+.main-content-down.active {
+  display: block;
+}
 
 /* MEDIA QUERIES */
 
@@ -522,6 +577,13 @@ h2 {
 
   .form-modal form {
     width: 40%;
+  }
+  #tag-input button {
+    font-size: 1rem;
+    padding: 1rem 1.5rem;
+  }
+  #tag-input {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 

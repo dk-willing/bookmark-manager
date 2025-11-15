@@ -32,14 +32,14 @@
           </div>
           <div class="menu-items">
             <div class="main-menu-items">
-              <button>
+              <a href="/" id="home-screen" class="clicked">
                 <i class="fa-solid fa-house menu-icon"></i>
                 <span>Home</span>
-              </button>
-              <button>
+              </a>
+              <a href="archived.html" id="archieve-screen">
                 <i class="fa-solid fa-box-archive menu-icon"></i>
                 <span>Archived</span>
-              </button>
+              </a>
             </div>
 
             <div class="manu-items-tags">
@@ -49,6 +49,7 @@
             </div>
           </div>
         </div>
+
         <div class="main-content">
           <div class="main-content-top">
             <div class="mobile-nav">
@@ -59,7 +60,7 @@
               <input
                 type="search"
                 name=""
-                id=""
+                id="search-bookmarks"
                 placeholder="Search by title..."
               />
             </div>
@@ -72,7 +73,7 @@
               </div>
             </div>
           </div>
-          <div class="main-content-down">
+          <div class="main-content-down active">
             <div class="main-content-down-header">
               <h3>All Bookmarks</h3>
               <div class="dropdown">
@@ -81,164 +82,14 @@
                   <p>Sort by</p>
                 </div>
                 <ul class="dropdown-list">
-                  <li>Alphabetically</li>
-                  <li>Date Added</li>
-                  <li>Selected Tags</li>
+                  <li class="alpha">Alphabetically</li>
+                  <li class="sort-date">Time Added</li>
+                  <li class="sort-tag">Selected Tags</li>
                 </ul>
               </div>
             </div>
 
-            <div class="main-content-cards">
-              <div class="card">
-                <div class="card-header">
-                  <div class="card-header-img">
-                    <img src="assets/youtube.png" alt="" />
-                  </div>
-                  <div class="card-header-text">
-                    <h2>YouTube</h2>
-                    <a href="#">youtube.com</a>
-                  </div>
-                  <div class="card-header-icon">
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                    <ul class="header-icon-menu-listen">
-                      <li>Add Tag</li>
-                      <li>Edit</li>
-                      <li>Archive</li>
-                      <li style="color: #fa5252" class="delete-action">
-                        Delete
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="card-body">
-                  <p>
-                    Build something end-to-end: Maybe one of your projects could
-                    be a full website — you already built “Omnifood” for CSS &
-                    design; now build one using Tailwind from scratch (HTML + JS
-                    + Tailwind) to solidify the workflow.
-                  </p>
-
-                  <div class="tags-els">
-                    <span>Practice</span>
-                    <span>Learning</span>
-                    <span>Community</span>
-                  </div>
-                </div>
-                <div class="card-footer">
-                  <div class="footer-info">
-                    <div>
-                      <i class="fa-solid fa-clock"></i>
-                      <span>23:00</span>
-                    </div>
-                    <div>
-                      <i class="fa-solid fa-calendar"></i>
-                      <span>10 Jan</span>
-                    </div>
-                  </div>
-                  <div class="pin">
-                    <i class="fa-solid fa-thumbtack"></i>
-                  </div>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-header">
-                  <div class="card-header-img">
-                    <img src="assets/facebook.png" alt="" />
-                  </div>
-                  <div class="card-header-text">
-                    <h2>Facebook</h2>
-                    <a href="#">facebook.com</a>
-                  </div>
-                  <div class="card-header-icon">
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                    <ul class="header-icon-menu-listen">
-                      <li>Add Tag</li>
-                      <li>Edit</li>
-                      <li>Archive</li>
-                      <li style="color: #fa5252" class="delete-action">
-                        Delete
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="card-body">
-                  <p>
-                    Integrate into your mini-projects: For each of your 50
-                    JavaScript mini projects, rebuild or restyle them using
-                    Tailwind. That will reinforce the utility-first mindset and
-                    how Tailwind config/customization works.
-                  </p>
-                  <div class="tags-els">
-                    <span>Reference</span>
-                    <span>HTML</span>
-                    <span>CSS</span>
-                    <span>JavaScript</span>
-                  </div>
-                </div>
-                <div class="card-footer">
-                  <div class="footer-info">
-                    <div>
-                      <i class="fa-solid fa-clock"></i>
-                      <span>23:00</span>
-                    </div>
-                    <div>
-                      <i class="fa-solid fa-calendar"></i>
-                      <span>10 Jan</span>
-                    </div>
-                  </div>
-                  <div class="pin">
-                    <i class="fa-solid fa-thumbtack"></i>
-                  </div>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-header">
-                  <div class="card-header-img">
-                    <img src="assets/whatsapp.png" alt="" />
-                  </div>
-                  <div class="card-header-text">
-                    <h2>WhatsApp</h2>
-                    <a href="#">whatsapp.com</a>
-                  </div>
-                  <div class="card-header-icon">
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                    <ul class="header-icon-menu-listen">
-                      <li>Add Tag</li>
-                      <li id="edit-bookmark">Edit</li>
-                      <li>Archive</li>
-                      <li class="delete-action">Delete</li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="card-body">
-                  <p>
-                    Performance & best practice: Use PurgeCSS or the built-in
-                    JIT mode to remove unused classes; learn about how to keep
-                    bundle size small.
-                  </p>
-                  <div class="tags-els">
-                    <span>JavaScript</span>
-                    <span>Practice</span>
-                    <span>Framework</span>
-                  </div>
-                </div>
-                <div class="card-footer">
-                  <div class="footer-info">
-                    <div>
-                      <i class="fa-solid fa-clock"></i>
-                      <span>23:00</span>
-                    </div>
-                    <div>
-                      <i class="fa-solid fa-calendar"></i>
-                      <span>10 Jan</span>
-                    </div>
-                  </div>
-                  <div class="pin">
-                    <i class="fa-solid fa-thumbtack"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <div class="main-content-cards"></div>
           </div>
         </div>
       </div>
@@ -250,7 +101,7 @@
         <i class="fa-solid fa-x"></i>
       </div>
       <div class="form-modal-bg"></div>
-      <form action="">
+      <form action="" id="bookmark-form">
         <p>Add Your New Bookmark</p>
         <div class="input-group">
           <label for="title">Title</label>
@@ -259,6 +110,7 @@
             placeholder="My next framework"
             name="title"
             id="title-text"
+            required
           />
         </div>
 
@@ -279,6 +131,7 @@
             placeholder="Your Bookmark Page URL"
             name="url"
             id="page-url"
+            required
           />
         </div>
 
@@ -289,19 +142,14 @@
             placeholder="Provide a short description for your bookmark"
             name="description"
             id="description-text"
-            rows="5"
+            rows="2"
             cols="30"
+            required
           ></textarea>
         </div>
 
-        <div class="input-group">
+        <div class="input-group" id="tag-input">
           <label for="title">Tags</label>
-          <input
-            type="text"
-            placeholder="Add tags for quick reference(Separate with ',')"
-            name="tags"
-            id="tags-str"
-          />
         </div>
 
         <button type="submit">Submit</button>

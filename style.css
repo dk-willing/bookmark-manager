@@ -16,6 +16,15 @@
   --primary: #165349;
 }
 
+.dark {
+  --black: #f8f9fa;
+  --gray: #6e6e6e;
+  --gray-deep: #eaeaea;
+  --blue: #575c64;
+  --white: #333;
+  --primary: #ffff;
+}
+
 html {
   font-size: 62.5%;
 }
@@ -26,6 +35,7 @@ body {
   font-weight: 400;
   line-height: 1.7;
   color: var(--black);
+  background-color: var(--white);
 }
 
 button {
@@ -75,6 +85,7 @@ h2 {
   flex-basis: 10%;
   position: relative;
   z-index: 5;
+  background-color: var(--white);
 }
 .logo img {
   width: 25rem;
@@ -111,6 +122,9 @@ h2 {
 .manu-items-tags {
   padding: 0 1.5rem;
 }
+.manu-items-tags p {
+  color: var(--gray-deep);
+}
 .manu-items-tags .header {
   font-size: 1.2rem;
   font-weight: 600;
@@ -122,6 +136,7 @@ h2 {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 0.5rem;
+  color: var(--black);
 }
 .tag-info {
   display: flex;
@@ -177,7 +192,8 @@ h2 {
   margin-left: 29rem;
   flex-basis: 25%;
 }
-.search input {
+.search input,
+.search input::placeholder {
   padding: 1rem 1rem 1rem 1rem;
   font-family: inherit;
   color: var(--black);
@@ -358,7 +374,7 @@ h2 {
 .card-body p {
   line-height: 1.5;
   font-size: 1.2rem;
-  color: #666;
+  color: var(--black);
 }
 
 .tags-els {
@@ -678,4 +694,23 @@ h2 {
     grid-template-columns: repeat(1, 1fr);
     gap: 2rem;
   }
+}
+
+/* THEME */
+.theme {
+  position: fixed;
+  bottom: 4rem;
+  right: 4rem;
+  width: 3.8rem;
+  height: 3.8rem;
+  border: 1px solid var(--black);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.theme i {
+  font-size: 2.4rem;
 }

@@ -1,4 +1,7 @@
 let onArchivePage = false;
+let theme = "light";
+
+theme = localStorage.getItem("myTheme") || "light";
 const mainContentCards = document.querySelector(".main-content-cards");
 const alphaSort = document.querySelector(".alpha");
 const dateSort = document.querySelector(".sort-date");
@@ -602,3 +605,32 @@ searchBookmarks.addEventListener("input", (e) => {
     }
   });
 });
+
+// THEME
+const themeBtn = document.querySelector(".theme");
+const logo = document.querySelector(".logo");
+themeBtn.addEventListener("click", () => {
+  document.documentElement.classList.toggle("dark");
+
+  if (document.documentElement.classList.contains("dark")) {
+    theme = "dark";
+    localStorage.setItem("myTheme", theme);
+    themeBtn.innerHTML = `<i class="fa-solid fa-sun"></i>`;
+    logo.innerHTML = `<img src="assets/logo-light.png" alt="" />`;
+  } else {
+    themeBtn.innerHTML = `<i class="fa-solid fa-moon"></i>`;
+    theme = "light";
+    localStorage.setItem("myTheme", theme);
+    logo.innerHTML = `<img src="assets/logo.png" alt="" />`;
+  }
+});
+
+if (theme === "dark") {
+  document.documentElement.classList.add("dark");
+  logo.innerHTML = `<img src="assets/logo-light.png" alt="" />`;
+  themeBtn.innerHTML = `<i class="fa-solid fa-sun"></i>`;
+} else {
+  document.documentElement.classList.remove("dark");
+  logo.innerHTML = `<img src="assets/logo.png" alt="" />`;
+  themeBtn.innerHTML = `<i class="fa-solid fa-moon"></i>`;
+}

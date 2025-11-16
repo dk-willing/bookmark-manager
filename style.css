@@ -563,6 +563,9 @@ h2 {
   z-index: 30;
   cursor: pointer;
 }
+.dark .close-modal-btn {
+  color: #333;
+}
 #tag-input button {
   padding: 0.8rem 1.2rem;
   margin: 0.3rem;
@@ -715,8 +718,8 @@ h2 {
 /* THEME */
 .theme {
   position: fixed;
-  bottom: 4rem;
-  right: 4rem;
+  bottom: 2rem;
+  right: 2rem;
   width: 3.8rem;
   height: 3.8rem;
   border: 1px solid var(--black);

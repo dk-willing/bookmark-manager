@@ -521,6 +521,7 @@ h2 {
 }
 
 .form-modal form {
+  position: relative;
   width: 35%;
   background-color: #fff;
   color: var(--black);
@@ -569,11 +570,11 @@ h2 {
 }
 
 .close-modal-btn {
-  position: fixed;
-  top: 5rem;
-  right: 5rem;
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
   color: var(--black);
-  font-size: 2rem;
+  font-size: 1.6rem;
   z-index: 30;
   cursor: pointer;
 }
@@ -617,6 +618,10 @@ h2 {
   display: block;
 }
 
+.main-content-top.archive {
+  padding: 0;
+}
+
 /* MEDIA QUERIES */
 
 @media (max-width: 70em) {
@@ -648,9 +653,13 @@ h2 {
     width: 0;
     top: 0;
     z-index: 3;
-    padding-top: 10rem;
+    padding-top: 8rem;
     width: 100%;
     transition: all 0.5s linear;
+  }
+
+  .main-content-top.archive {
+    padding: 2rem;
   }
 
   .search {
@@ -701,6 +710,10 @@ h2 {
   .input-group {
     margin-bottom: 0.5rem;
   }
+
+  .form-modal form p {
+    font-size: 1.6rem;
+  }
 }
 
 @media (max-width: 35em) {
@@ -747,4 +760,8 @@ h2 {
 
 .theme i {
   font-size: 2.4rem;
+}
+
+.dark .sidebar {
+  scrollbar-color: var(--white);
 }

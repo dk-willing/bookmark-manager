@@ -1,3 +1,4 @@
+import { tagsArr, renderTags, displayCard, setupTheme } from "./utils.js";
 let onArchivePage = false;
 let theme = "light";
 
@@ -15,27 +16,6 @@ const mainContentDown = document.querySelector(".main-content-down");
 // Global Variables
 let isEditMode = false;
 let selectedTags = [];
-
-// TAGS OBJECTS
-const tagsArr = [
-  { label: "AI", count: 0 },
-  { label: "Community", count: 0 },
-  { label: "Compatibility", count: 0 },
-  { label: "CSS", count: 0 },
-  { label: "Design", count: 0 },
-  { label: "Framework", count: 0 },
-  { label: "Git", count: 0 },
-  { label: "HTML", count: 0 },
-  { label: "JavaScript", count: 0 },
-  { label: "Layout", count: 0 },
-  { label: "Learning", count: 0 },
-  { label: "Performance", count: 0 },
-  { label: "Practice", count: 0 },
-  { label: "Reference", count: 0 },
-  { label: "Tips", count: 0 },
-  { label: "Tools", count: 0 },
-  { label: "Tutorials", count: 0 },
-];
 
 tagsArr.forEach((tag) => {
   const button = document.createElement("button");
@@ -58,146 +38,9 @@ tagsArr.forEach((tag) => {
 });
 
 // Creating and adding card to the UI
-function displayCard(bookmarkItemsFetched, wrapper = mainContentCards) {
-  if (bookmarkItemsFetched.length === 0) {
-    wrapper.innerHTML = `
-    <p class="no-bookmarks">No Bookmarks found</p>
-    `;
-  } else {
-    wrapper.innerHTML = "";
-    bookmarkItemsFetched.forEach((obj) => {
-      const cardDiv = document.createElement("div");
-      cardDiv.classList.add("card");
-
-      const cardHeader = document.createElement("div");
-      cardHeader.classList.add("card-header");
-
-      cardDiv.appendChild(cardHeader);
-
-      const cardHeaderImage = document.createElement("div");
-      cardHeaderImage.classList.add("card-header-img");
-
-      cardHeader.appendChild(cardHeaderImage);
-
-      const cardImage = document.createElement("img");
-      cardImage.src = obj.imageUrl;
-      cardHeaderImage.appendChild(cardImage);
-
-      const cardHeaderText = document.createElement("div");
-      cardHeaderText.classList.add("card-header-text");
-
-      cardHeader.appendChild(cardHeaderText);
-
-      const h2 = document.createElement("h2");
-      h2.textContent = obj.title;
-
-      cardHeaderText.appendChild(h2);
-
-      const cardLink = document.createElement("a");
-      cardLink.href = obj.pageLink;
-      cardLink.textContent = obj.pageLink;
-
-      cardHeaderText.appendChild(cardLink);
-
-      const cardHeaderIcon = document.createElement("div");
-      cardHeaderIcon.classList.add("card-header-icon");
-
-      const divIcon = document.createElement("i");
-      divIcon.classList.add("fa-solid", "fa-ellipsis-vertical");
-
-      cardHeaderIcon.appendChild(divIcon);
-
-      const ul = document.createElement("ul");
-      ul.classList.add("header-icon-menu-listen");
-
-      const addLi = document.createElement("li");
-      addLi.textContent = `Add Tag`;
-      addLi.id = `add-tag`;
-
-      ul.appendChild(addLi);
-
-      const editLi = document.createElement("li");
-      editLi.textContent = `Edit`;
-      editLi.id = `edit-bookmark`;
-      ul.appendChild(editLi);
-
-      const archieveLi = document.createElement("li");
-      archieveLi.textContent = `Archieve`;
-      archieveLi.id = `add-archive`;
-      ul.appendChild(archieveLi);
-
-      const deleteLi = document.createElement("li");
-      deleteLi.textContent = `Delete`;
-      deleteLi.classList.add("delete-action");
-      ul.appendChild(deleteLi);
-
-      cardHeaderIcon.appendChild(ul);
-
-      cardHeader.appendChild(cardHeaderIcon);
-
-      // Card body
-      const cardBody = document.createElement("div");
-      cardBody.classList.add("card-body");
-
-      const cardDescription = document.createElement("p");
-      cardDescription.textContent = obj.description;
-      cardBody.appendChild(cardDescription);
-
-      // Tags
-      const tagsDiv = document.createElement("div");
-      tagsDiv.classList.add("tags-els");
-      cardBody.appendChild(tagsDiv);
-
-      // Loop through the tags array to create the tags
-      obj.tags.forEach((el) => {
-        const spanTag = document.createElement("span");
-        spanTag.textContent = el;
-        tagsDiv.appendChild(spanTag);
-      });
-
-      cardDiv.appendChild(cardBody);
-
-      // Card Footer
-      const cardFooter = document.createElement("div");
-      cardFooter.classList.add("card-footer");
-      cardDiv.appendChild(cardFooter);
-
-      const cardFooterInfo = document.createElement("div");
-      cardFooterInfo.classList.add("footer-info");
-      cardFooter.appendChild(cardFooterInfo);
-
-      const div1 = document.createElement("div");
-      const icon1 = document.createElement("i");
-      icon1.classList.add("fa-solid", "fa-clock");
-      div1.appendChild(icon1);
-      const span1 = document.createElement("span");
-      span1.textContent = obj.timeAdded;
-      div1.appendChild(span1);
-      cardFooterInfo.appendChild(div1);
-
-      const div2 = document.createElement("div");
-      const icon2 = document.createElement("i");
-      icon2.classList.add("fa-solid", "fa-calendar");
-      div2.appendChild(icon2);
-      const span2 = document.createElement("span");
-      span2.textContent = obj.dateAdded;
-      div2.appendChild(span2);
-      cardFooterInfo.appendChild(div2);
-
-      const pinDiv = document.createElement("div");
-      pinDiv.classList.add("pin");
-      const icon3 = document.createElement("i");
-      icon3.classList.add("fa-solid", "fa-thumbtack", "pin-bookmark");
-      pinDiv.appendChild(icon3);
-      cardFooter.appendChild(pinDiv);
-
-      wrapper.appendChild(cardDiv);
-    });
-  }
-}
 
 let bookmarkItemsFetched = getItemsFromLocalStorage() || [];
-displayCard(bookmarkItemsFetched, mainContentCards);
+displayCard("mainCard", bookmarkItemsFetched, mainContentCards);
 
 // Bookmark item blueprint
 const bookmarkItems = [];
@@ -220,44 +63,7 @@ const formModalBg = document.querySelector(".form-modal-bg");
 const closeModalBtn = document.querySelector(".close-modal-btn");
 
 // This creates and displays the tags label and count on the screen
-tagsArr.forEach((el) => {
-  const tagDiv = document.createElement("div"); // Creating the tag div
-  tagDiv.classList.add("tag"); // Adding the tag class
-
-  const tagInfo = document.createElement("div");
-  tagInfo.classList.add("tag-info");
-
-  const tagInput = document.createElement("input");
-  tagInput.type = "checkbox";
-  tagInput.dataset.value = el.label;
-
-  const tagLabel = document.createElement("label");
-  tagLabel.textContent = el.label;
-
-  const tagCount = document.createElement("div");
-  tagCount.classList.add("tag-count");
-
-  const countSpan = document.createElement("span");
-  countSpan.textContent = el.count;
-
-  tagCount.appendChild(countSpan);
-  tagInfo.appendChild(tagInput);
-  tagInfo.appendChild(tagLabel);
-
-  tagDiv.appendChild(tagInfo);
-  tagDiv.appendChild(tagCount);
-
-  tagsContainer.appendChild(tagDiv);
-
-  // Updating the count values
-  const stored = getItemsFromLocalStorage();
-  stored.forEach((obj) => {
-    if (obj.tags.includes(el.label)) {
-      el.count++;
-    }
-    countSpan.textContent = el.count;
-  });
-});
+renderTags(tagsArr, tagsContainer, "bookmarks");
 
 // Mobile nav toggler
 mobileNavMenu.addEventListener("click", () => {
@@ -373,7 +179,7 @@ pinBookmark.forEach((el) => {
         savedBookmarks.unshift(pinItem);
 
         localStorage.setItem("bookmarks", JSON.stringify(savedBookmarks));
-        displayCard(savedBookmarks, mainContentCards);
+        displayCard("mainCard", savedBookmarks, mainContentCards);
 
         window.location.reload();
       }
@@ -394,7 +200,7 @@ alphaSort.addEventListener("click", () => {
 
   bookmarksInLocalStorage.sort((a, b) => a.title.localeCompare(b.title));
   localStorage.setItem("bookmarks", JSON.stringify(bookmarksInLocalStorage));
-  displayCard(bookmarksInLocalStorage, mainContentCards);
+  displayCard("mainCard", bookmarksInLocalStorage, mainContentCards);
   window.location.reload();
 });
 
@@ -419,7 +225,7 @@ addArchive.forEach((btn) => {
 
     localStorage.setItem("archived-bookmarks", JSON.stringify(archivedData));
 
-    displayCard(savedData, mainContentCards);
+    displayCard("mainCard", savedData, mainContentCards);
     window.location.reload();
   });
 });
@@ -431,7 +237,7 @@ dateSort.addEventListener("click", () => {
 
   localStorage.setItem("bookmarks", JSON.stringify(dataInLocalStorage));
 
-  displayCard(dataInLocalStorage, mainContentCards);
+  displayCard("mainCard", dataInLocalStorage, mainContentCards);
   window.location.reload();
 });
 
@@ -463,7 +269,7 @@ sortTags.addEventListener("click", () => {
 // Function to add new form data
 function addNewBookmark() {
   let savedItems = getItemsFromLocalStorage();
-  displayCard(savedItems, mainContentCards);
+  displayCard("mainCard", savedItems, mainContentCards);
   const { time, date } = addDateAndTime();
 
   let bookmarkData = {
@@ -484,7 +290,7 @@ function addNewBookmark() {
   savedItems.unshift(bookmarkData);
   localStorage.setItem("bookmarks", JSON.stringify(savedItems));
   formModal.classList.remove("show-modal");
-  displayCard(savedItems, mainContentCards);
+  displayCard("mainCard", savedItems, mainContentCards);
 }
 
 // This sets the items to be edited
@@ -607,30 +413,4 @@ searchBookmarks.addEventListener("input", (e) => {
 });
 
 // THEME
-const themeBtn = document.querySelector(".theme");
-const logo = document.querySelector(".logo");
-themeBtn.addEventListener("click", () => {
-  document.documentElement.classList.toggle("dark");
-
-  if (document.documentElement.classList.contains("dark")) {
-    theme = "dark";
-    localStorage.setItem("myTheme", theme);
-    themeBtn.innerHTML = `<i class="fa-solid fa-sun"></i>`;
-    logo.innerHTML = `<img src="assets/logo-light.png" alt="" />`;
-  } else {
-    themeBtn.innerHTML = `<i class="fa-solid fa-moon"></i>`;
-    theme = "light";
-    localStorage.setItem("myTheme", theme);
-    logo.innerHTML = `<img src="assets/logo.png" alt="" />`;
-  }
-});
-
-if (theme === "dark") {
-  document.documentElement.classList.add("dark");
-  logo.innerHTML = `<img src="assets/logo-light.png" alt="" />`;
-  themeBtn.innerHTML = `<i class="fa-solid fa-sun"></i>`;
-} else {
-  document.documentElement.classList.remove("dark");
-  logo.innerHTML = `<img src="assets/logo.png" alt="" />`;
-  themeBtn.innerHTML = `<i class="fa-solid fa-moon"></i>`;
-}
+setupTheme();
